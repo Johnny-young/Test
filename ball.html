@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>球</title>
+<meta name="keywords" content="关键词" />
+<meta name="description" content="描述" />
+</head>
+<style>
+*{margin: 0;padding: 0;}
+.wrap{
+	width: 100%;
+	height: 500px;
+	-webkit-perspective: 1200px;
+	-webkit-perspective-origin: 50% 50%;
+	-moz-perspective: 1200px;
+	-moz-perspective-origin: 50% 50%;
+	perspective: 1200px;
+	perspective-origin: 50% 50%;
+	border-bottom: 1px solid #000;
+}
+.ball{
+	position: relative;
+	margin: 50px auto;
+	width: 400px;
+	height: 400px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	background: black;
+}
+.ball1{
+	/*background: -webkit-radial-gradient(80px 80px,circle,#f00,#000);
+	background: -moz-radial-gradient(80px 80px,circle,#f00,#000);
+	background: radial-gradient(80px 80px,circle,#f00,#000);*/
+	background: -webkit-radial-gradient(50% 120%,circle,#f00,#000);
+	background: -moz-radial-gradient(50% 120%,circle,#f00,#000);
+	background: radial-gradient(50% 120%,circle,#f00,#000);
+}
+.shadow{
+	position: absolute;
+	bottom: -230px;
+	left: 0;
+	width: 400px;
+	height: 400px;
+	background: -webkit-radial-gradient(circle at 50% 50%,rgba(0,0,0,.6),rgba(0,0,0,.2),rgba(0,0,0,0) 70%);
+	background: -moz-radial-gradient(circle at 50% 50%,rgba(0,0,0,.6),rgba(0,0,0,.2),rgba(0,0,0,0) 70%);
+	background: radial-gradient(circle at 50% 50%,rgba(0,0,0,.6),rgba(0,0,0,.2),rgba(0,0,0,0) 70%);
+	-webkit-transform: rotateX(90deg);
+	-moz-transform: rotateX(90deg);
+	transform: rotateX(90deg);
+	z-index: -1;
+}
+.ball1:before{
+	position: absolute;
+	content: "";
+	top: 1%;
+	left: 5%;
+	width: 350px;
+	height: 350px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	background: -webkit-radial-gradient(50% 0,circle,#fff,rgba(255,255,255,0) 58%);
+	background: -moz-radial-gradient(50% 0,circle,#fff,rgba(255,255,255,0) 58%);
+	background: radial-gradient(50% 0,circle,#fff,rgba(255,255,255,0) 58%);
+	-webkit-filter: blur(5px);
+	filter: blur(5px);
+}
+hr{margin: 100px 0;}
+.ball2{
+	background: -webkit-radial-gradient(50% 120%,circle,#444,#0a0a0a 80%,#000 100%);
+	background: -moz-radial-gradient(50% 120%,circle,#444,#0a0a0a 80%,#000 100%);
+	background: radial-gradient(50% 120%,circle,#444,#0a0a0a 80%,#000 100%);
+}
+.ball2:before{
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 5%;
+	width: 100%;
+	height: 100%;
+	background: -webkit-radial-gradient(50% 50%,rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0.8) 15%,rgba(255, 255, 255, 0) 35%);
+	background: -moz-radial-gradient(50% 50%,rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0.8) 15%,rgba(255, 255, 255, 0) 35%);
+	background: radial-gradient(50% 50%,rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0.8) 15%,rgba(255, 255, 255, 0) 35%);
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	-webkit-filter: blur(10px);
+	filter: blur(10px);
+	-webkit-transform: translateX(-90px) translateY(-100px) skewX(-20deg);
+	-moz-transform: translateX(-90px) translateY(-100px) skewX(-20deg);
+	transform: translateX(-90px) translateY(-100px) skewX(-20deg);
+}
+.ball2:after{
+	position: absolute;
+	content: "";
+	bottom: 2%;
+	left: 5%;
+	width: 90%;
+	height: 100%;
+	background: -webkit-radial-gradient(50% 120%,circle,rgba(255,255,255,.5),rgba(255,255,255,0) 70%);
+	background: -moz-radial-gradient(50% 120%,circle,rgba(255,255,255,.5),rgba(255,255,255,0) 70%);
+	background: radial-gradient(50% 120%,circle,rgba(255,255,255,.5),rgba(255,255,255,0) 70%);
+	-webkit-filter: blur(5px);
+	filter: blur(5px);
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+
+</style>
+<body>
+<div class="wrap">
+	<div class="ball1 ball"><span class="shadow"></span></div>
+</div>
+<div class="wrap">
+	<div class="ball2 ball"><span class="shadow"></span></div>
+</div>
+<script>
+	//实现球的焦点跟随鼠标移动
+	window.onload = function() {
+		var ball = document.getElementsByClassName("ball1")[0];
+
+		ball.onmouseenter = function() {
+			window.onmousemove = function(e) {
+				var e = e || window.event;
+				var x = e.clientX - ball.offsetLeft + "px";
+				var y = e.clientY - ball.offsetTop + "px";
+				var pos = x + " " + y;
+				ball.style.background = "-webkit-radial-gradient(" + pos + ",circle,#f00,#000)";
+				ball.style.background = "-moz-radial-gradient(" + pos + ",circle,#f00,#000)";
+				ball.style.background = "radial-gradient(" + pos + ",circle,#f00,#000)";
+			};
+		};
+		ball.onmouseout = function() {
+			window.onmousemove = null;
+		};
+	};
+</script>
+</body>
+</html>

@@ -46,9 +46,12 @@ li{
 	background: -moz-radial-gradient(transparent 50%,rgba(0,0,0,.5) 100%);
 	background: -o-radial-gradient(transparent 50%,rgba(0,0,0,.5) 100%);
 	background: radial-gradient(transparent 50%,rgba(0,0,0,.5) 100%);
-	-webkit-transition: transform ease .5s;
+	/* -webkit-transition: transform ease .5s;
 	-moz-transition: transform ease .5s;
-	transition: transform ease .5s;
+	transition: transform ease .5s; */
+	-webkit-animation: changebg 10s ease-in-out infinite alternate-reverse;
+	-moz-animation: changebg 10s ease-in-out infinite alternate-reverse;
+	animation: changebg 10s ease-in-out infinite alternate-reverse;
 }
 
 .front{
@@ -109,6 +112,115 @@ li{
 		transfrm: rotateX(270deg) rotateY(360deg);
 	}
 }
+@keyframes changebg{
+	0% {
+		background: -webkit-radial-gradient(transparent 50%,rgba(0,0,0,.5) 100%);
+		background: -moz-radial-gradient(transparent 50%,rgba(0,0,0,.5) 100%);
+		background: -o-radial-gradient(transparent 50%,rgba(0,0,0,.5) 100%);
+		background: radial-gradient(transparent 50%,rgba(0,0,0,.5) 100%);
+	}
+
+	25% {
+		background: -webkit-radial-gradient(transparent 30%,rgba(0,0,0,.5) 50%,rgba(9,8,1,.5) 100%);
+		background: -moz-radial-gradient(transparent 30%,rgba(0,0,0,.5) 50%,rgba(9,8,1,.5) 100%);
+		background: -o-radial-gradient(transparent 30%,rgba(0,0,0,.5) 50%,rgba(9,8,1,.5) 100%);
+		background: radial-gradient(transparent 30%,rgba(0,0,0,.5) 50%,rgba(9,8,1,.5) 100%);
+	}
+
+	50% {
+		background: -webkit-radial-gradient(transparent 10%,rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,rgba(5,81,9,.5) 100%);
+		background: -moz-radial-gradient(transparent 10%,rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,rgba(5,81,9,.5) 100%);
+		background: -o-radial-gradient(transparent 10%,rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,rgba(5,81,9,.5) 100%);
+		background: radial-gradient(transparent 10%,rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,rgba(5,81,9,.5) 100%);	
+	}
+	
+	100% {
+		background: -webkit-radial-gradient(rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+		background: -moz-radial-gradient(rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+		background: -o-radial-gradient(trgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+		background: radial-gradient(rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+	}
+}
+@-webkit-keyframes changebg{
+	0% {
+		background: -webkit-radial-gradient(transparent 50%,rgba(0,0,0,.5) 100%);
+		background: -moz-radial-gradient(transparent 50%,rgba(0,0,0,.5) 100%);
+		background: -o-radial-gradient(transparent 50%,rgba(0,0,0,.5) 100%);
+		background: radial-gradient(transparent 50%,rgba(0,0,0,.5) 100%);
+	}
+
+	25% {
+		background: -webkit-radial-gradient(transparent 30%,rgba(0,0,0,.5) 50%,rgba(9,8,1,.5) 100%);
+		background: -moz-radial-gradient(transparent 30%,rgba(0,0,0,.5) 50%,rgba(9,8,1,.5) 100%);
+		background: -o-radial-gradient(transparent 30%,rgba(0,0,0,.5) 50%,rgba(9,8,1,.5) 100%);
+		background: radial-gradient(transparent 30%,rgba(0,0,0,.5) 50%,rgba(9,8,1,.5) 100%);
+	}
+
+	50% {
+		background: -webkit-radial-gradient(transparent 10%,rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,rgba(5,81,9,.5) 100%);
+		background: -moz-radial-gradient(transparent 10%,rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,rgba(5,81,9,.5) 100%);
+		background: -o-radial-gradient(transparent 10%,rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,rgba(5,81,9,.5) 100%);
+		background: radial-gradient(transparent 10%,rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,rgba(5,81,9,.5) 100%);	
+	}
+	
+	100% {
+		background: -webkit-radial-gradient(rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+		background: -moz-radial-gradient(rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+		background: -o-radial-gradient(trgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+		background: radial-gradient(rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+	}
+}
+.demo{
+	width: 100px;
+	height: 100px;
+	-webkit-animation: bg 5s ease-in-out infinite alternate-reverse;
+	-moz-animation: bg 5s ease-in-out infinite alternate-reverse;
+	animation: bg 5s ease-in-out infinite alternate-reverse;
+}
+@keyframes bg {
+	0% {
+		background: -webkit-radial-gradient(rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+		background: -moz-radial-gradient(rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+		background: -o-radial-gradient(trgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+		background: radial-gradient(rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+	}
+
+	50% {
+		background: -webkit-radial-gradient(rgba(0,0,0,.5) 10%,rgba(9,8,1,.5) 50%,transparent 90%);
+		background: -moz-radial-gradient(rgba(0,0,0,.5) 10%,rgba(9,8,1,.5) 50%,transparent 90%);
+		background: -o-radial-gradient(trgba(0,0,0,.5) 10%,rgba(9,8,1,.5) 50%,transparent 90%);
+		background: radial-gradient(rgba(0,0,0,.5) 10%,rgba(9,8,1,.5) 50%,transparent 90%);
+	}
+
+	100% {
+		background: -webkit-radial-gradient(rgba(0,0,0,.5) 1%,rgba(9,8,1,.5) 30%,transparent 70%);
+		background: -moz-radial-gradient(rgba(0,0,0,.5) 1%,rgba(9,8,1,.5) 30%,transparent 70%);
+		background: -o-radial-gradient(trgba(0,0,0,.5) 1%,rgba(9,8,1,.5) 30%,transparent 70%);
+		background: radial-gradient(rgba(0,0,0,.5) 1%,rgba(9,8,1,.5) 30%,transparent 70%);
+	}
+}
+@-webkit-keyframes bg {
+	0% {
+		background: -webkit-radial-gradient(rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+		background: -moz-radial-gradient(rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+		background: -o-radial-gradient(trgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+		background: radial-gradient(rgba(0,0,0,.5) 30%,rgba(9,8,1,.5) 60%,transparent 100%);
+	}
+
+	50% {
+		background: -webkit-radial-gradient(rgba(0,0,0,.5) 10%,rgba(9,8,1,.5) 50%,transparent 90%);
+		background: -moz-radial-gradient(rgba(0,0,0,.5) 10%,rgba(9,8,1,.5) 50%,transparent 90%);
+		background: -o-radial-gradient(trgba(0,0,0,.5) 10%,rgba(9,8,1,.5) 50%,transparent 90%);
+		background: radial-gradient(rgba(0,0,0,.5) 10%,rgba(9,8,1,.5) 50%,transparent 90%);
+	}
+
+	100% {
+		background: -webkit-radial-gradient(rgba(0,0,0,.5) 1%,rgba(9,8,1,.5) 30%,transparent 70%);
+		background: -moz-radial-gradient(rgba(0,0,0,.5) 1%,rgba(9,8,1,.5) 30%,transparent 70%);
+		background: -o-radial-gradient(trgba(0,0,0,.5) 1%,rgba(9,8,1,.5) 30%,transparent 70%);
+		background: radial-gradient(rgba(0,0,0,.5) 1%,rgba(9,8,1,.5) 30%,transparent 70%);
+	}
+}
 </style>
 <body>
 <div class="wrap">
@@ -120,6 +232,10 @@ li{
 		<li class="top"></li>
 		<li class="bottom"></li>
 	</ul>
+
+	<div class="demo">
+		
+	</div>
 </div>
 </body>
 </html>
