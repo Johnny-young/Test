@@ -108,18 +108,150 @@ hr{margin: 100px 0;}
 	-moz-border-radius: 50%;
 	border-radius: 50%;
 }
+.num{
+	position: absolute;
+	right: 15%;
+	top: 10%;
+	width: 33%;
+	height: 33%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	background: #fff;
+	font-size: 100px;
+	font-weight: 700;
+	color: #000;
+	text-align: center;
+	line-height: 120px;
+	-webkit-transform: translateX(10px) translateY(-10px) skewX(20deg);
+	-moz-transform: translateX(10px) translateY(-10px) skewX(20deg);
+	transform: translateX(10px) translateY(-10px) skewX(20deg);
+}
+.eye{
+	position: relative;
+	margin: 50px auto;
+	width: 400px;
+	height: 400px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	background: -webkit-radial-gradient(50% 40%,circle,#fcfcfc,#efeff1 66%,#9b5050 100%);
+	background: -moz-radial-gradient(50% 40%,circle,#fcfcfc,#efeff1 66%,#9b5050 100%);
+	background: radial-gradient(50% 40%,circle,#fcfcfc,#efeff1 66%,#9b5050 100%);
+}
+.iris{
+	position: absolute;
+	right: 10%;
+	top: 8%;
+	width: 40%;
+	height: 40%;
+	background: -webkit-radial-gradient(50% 50%,circle,#208ab4 0%,#6fbfff 30%,#4381b2 100%);
+	background: -moz-radial-gradient(50% 50%,circle,#208ab4 0%,#6fbfff 30%,#4381b2 100%);
+	background: radial-gradient(50% 50%,circle,#208ab4 0%,#6fbfff 30%,#4381b2 100%);
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	-webkit-transform: rotateX(30deg) rotateY(25deg);
+	-moz-transform: rotateX(30deg) rotateY(25deg);
+	transform: rotateX(30deg) rotateY(25deg);
+	/* -webkit-animation: move-eye 5s ease-in-out infinite;
+	-moz-animation: move-eye 5s ease-in-out infinite;
+	animation: move-eye 5s ease-in-out infinite; */
+}
 
+.iris:before{
+	position: absolute;
+	content: "";
+	left: 30%;
+	top: 30%;
+	width: 40%;
+	height: 40%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	background: black;
+}
+.iris:after{
+	position: absolute;
+	content: "";
+	top: 20%;
+	left: 20%;
+	width: 30%;
+	height: 30%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	background: rgba(255,255,255,.2);
+}
+
+@keyframes move-eye {
+	0% {
+		transform: skewX(15deg) skewY(5deg);
+	}
+
+	20% {
+		transform: translateX(-80px) translateY(70px) skewX(5deg) skewY(-5deg) scale(0.99);
+	}
+
+	25%,44% {
+		transform: translateX(-80px) translateY(70px) skewX(5deg) skewY(-5deg) scale(0.99);
+	}
+
+	50%,60% {
+		transform: translateX(-170px) translateY(140px) skewX(5deg) skewY(2deg) scaleX(0.99);
+	}
+
+	66%,100% {
+		transform: skewX(15deg) skewY(5deg);
+	}
+}
+@-webkit-keyframes move-eye {
+	0% {
+		transform: skewX(15deg) skewY(5deg);
+	}
+
+	20% {
+		transform: translateX(-80px) translateY(70px) skewX(5deg) skewY(-5deg) scale(0.99);
+	}
+
+	25%,44% {
+		transform: translateX(-80px) translateY(70px) skewX(5deg) skewY(-5deg) scale(0.99);
+	}
+
+	50%,60% {
+		transform: translateX(-170px) translateY(140px) skewX(5deg) skewY(2deg) scaleX(0.99);
+	}
+
+	66%,100% {
+		transform: skewX(15deg) skewY(5deg);
+	}
+}
 </style>
 <body>
 <div class="wrap">
 	<div class="ball1 ball"><span class="shadow"></span></div>
 </div>
 <div class="wrap">
-	<div class="ball2 ball"><span class="shadow"></span></div>
+	<div class="ball2 ball">
+		<span class="shadow"></span>
+		<span class="num">8</span>
+	</div>
+</div>
+<div class="wrap">
+	<div class="ball3 ball">
+		<span class="shadow"></span>
+	</div>
+</div>
+<div class="wrap">
+	<div class="eye">
+		<div class="shadow"></div>
+		<div class="iris"></div>
+	</div>
 </div>
 <script>
-	//实现球的焦点跟随鼠标移动
+	
 	window.onload = function() {
+		//实现球的焦点跟随鼠标移动
 		var ball = document.getElementsByClassName("ball1")[0];
 
 		ball.onmouseenter = function() {
@@ -136,6 +268,69 @@ hr{margin: 100px 0;}
 		ball.onmouseout = function() {
 			window.onmousemove = null;
 		};
+
+		//眼球随着鼠标移动
+		var eye = document.getElementsByClassName("eye")[0];
+		var iris = eye.getElementsByClassName("iris")[0];
+		var xDeg;
+		var yDeg;
+
+		eye.onmouseenter = function() {
+			this.onmousemove = function(e) {
+				var e = e || window.event;
+				//获取元素在屏幕的位置,IE需要兼容
+				var pos = eye.getBoundingClientRect();
+				var ieLeft = document.documentElement.clientLeft;
+				var ieTop = document.documentElement.clientTop;
+				//鼠标在元素中的位置
+				var left = e.clientX - (pos.left - ieLeft);
+				var top = e.clientY - (pos.top - ieTop);
+				//console.log(left + "," + top);
+				//鼠标位置
+				var pos = left + "px"+ " " + top + "px";
+				//眼睛背景渐变颜色中心改变
+				eye.style.background = "-webkit-radial-gradient(" + pos + ",circle,#fcfcfc,#efeff1 66%,#9b5050 100%)";
+				eye.style.background = "-moz-radial-gradient(" + pos + ",circle,#fcfcfc,#efeff1 66%,#9b5050 100%)";
+				eye.style.background = "radial-gradient(" + pos + ",circle,#fcfcfc,#efeff1 66%,#9b5050 100%)";
+
+
+				//眼睛虹膜位置改变
+				//虹膜的width,height
+				var irisWidth = parseInt(getStyle(iris,'width'));
+				var irisHeight = parseInt(getStyle(iris,'height'));
+
+				var l = left - 200;
+				var t = top - 200;
+				console.log(l+200);
+				console.log(t+200);
+				if((l*l + t*t) <= 40000) {
+
+					Math.abs(l) > (200 - irisWidth/2) && (l = l < 0 ? (irisWidth/2 - 200) : (200 - irisWidth/2));
+					Math.abs(t) > (200 - irisHeight/2) && (t = t < 0 ? (irisHeight/2 - 200) : (200 - irisHeight/2));
+
+					iris.style.left = l + 200 - irisWidth/2 + "px";
+					iris.style.top = t + 200 - irisHeight/2 + "px";
+				}
+				//眼睛虹膜角度变换
+				l < 0 ? (yDeg=35/200) : (yDeg=35/200);
+				t < 0 ? (xDeg=-35/200) : (xDeg=-35/200);
+				
+				l == 0 && (yDeg=0);	
+				t == 0 && (xDeg=0);
+				
+
+				var trans = "rotateX(" + xDeg*t + "deg)" + " " + "rotateY(" + yDeg*l + "deg)";
+				iris.style.webkitTransform = trans;
+				iris.style.mozTransform = trans;
+				iris.style.transform = trans;
+			};
+		};
+
+
+		//获取元素的样式值
+		function getStyle(obj,attr) {
+			return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj,false)[attr];
+		}
 	};
 </script>
 </body>
